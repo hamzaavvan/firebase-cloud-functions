@@ -3,16 +3,6 @@ const admin = require('firebase-admin');
 
 admin.initializeApp();
 
-// exports.addMessage = functions.https.onRequest((req, res) => {
-//     const original = req.query.text;
-
-//     return admin.database().ref('/message').push({original: original})
-//     .then(snaphshot => {
-//         return res.redirect(303, snaphshot.ref.toString());
-//     });
-// });
-
-
 exports.addFile = functions.https.onRequest((req, res) => {
     const original = req.query.text;
 
@@ -23,17 +13,6 @@ exports.addFile = functions.https.onRequest((req, res) => {
         return res.redirect(303, snaphshot.ref.toString());
     });
 });
-
-// // exports.makeUppercase = functions.database.ref(`message/{pushId}/original`)
-// // .onCreate((snaphshot, context) => {
-// //     const original = snaphshot.val();
-
-// //     console.log("Uppercasing", context.params.pushId, original);
-
-// //     const uppercase = original.toUpperCase();
-
-// //     return snaphshot.ref.parent.child('uppercase').set(uppercase);
-// // });
 
 exports.makeUpdatex = functions.database.ref(`allotments/{pushId}/`)
 .onCreate((snaphshot, context) => {
