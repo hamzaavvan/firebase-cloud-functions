@@ -3,9 +3,10 @@ const admin = require('firebase-admin');
 
 admin.initializeApp();
 
+/**
+ * Test case
+ */
 exports.addFile = functions.https.onRequest((req, res) => {
-    const original = req.query.text;
-
     return admin.database().ref('/allotments').push({
         person: {emailAddress: "test@gmail.com", name: "Test"},
         files: [{filename: "abc.mp3"},{filename: "bcd.mp3"}]
@@ -14,6 +15,9 @@ exports.addFile = functions.https.onRequest((req, res) => {
     });
 });
 
+/**
+ * Cloud Function to make changes to allotment
+ */
 exports.makeUpdatex = functions.database.ref(`allotments/{pushId}/`)
 .onCreate((snaphshot, context) => {
     const allotment = snaphshot.val();
