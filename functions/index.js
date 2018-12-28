@@ -17,6 +17,7 @@ exports.addFile = functions.https.onRequest((req, res) => {
 
 /**
  * Cloud Function to make changes to allotment
+ * Execute whenever a child node inserted
  */
 exports.makeUpdatex = functions.database.ref(`allotments/{pushId}/`)
 .onCreate((snaphshot, context) => {
